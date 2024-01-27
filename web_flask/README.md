@@ -30,7 +30,7 @@ For this project, we expect you to look at this concept:
 
 **Recommended YouTube playlist to get you started**
 
-![youtubeplay List link](https://youtu.be/MwZwr5Tvyxo?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
+![youtubeplaylist](https://youtu.be/MwZwr5Tvyxo?list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH)
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -87,6 +87,7 @@ Install Flask
 '''bash
 $ pip3 install Flask
 '''
+![img](https://s3.amazonaws.com/intranet-projects-files/concepts/74/hbnb_step3.png)
 
 ## Manual QA Review
 
