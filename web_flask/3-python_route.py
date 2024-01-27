@@ -4,7 +4,6 @@ scripts that starts a flask web application
 with the route / that returns "Hello HBNB"
 """
 from flask import Flask
-from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -29,7 +28,7 @@ def c_is_fun(text):
 @app.route("/python/<string:text>",  strict_slashes=False)
 @app.route("/python/", defaults={'text': 'is cool'}, strict_slashes=False)
 def python_is_cool(text):
-    return f"Python  + {escape(text.replace('_', ' '))}"
+    return "Python " + text.replace('_', ' ')
 
 
 if __name__ == "__main__":
