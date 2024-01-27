@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route("/", strict_slashes=False)
-def hello():
+def index():
     """Method to run when / route is entered"""
     return "Hello HBNB!"
 
