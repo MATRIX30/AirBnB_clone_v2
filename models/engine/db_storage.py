@@ -12,10 +12,6 @@ class DBStorage:
     __session = None
 
     def __init__(self):
-        """
-        constructor for db storage that starts by
-        creating a connection to a database
-        """
         self.__engine = (
             create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'
                           .format(getenv('HBNB_MYSQL_USER'),
