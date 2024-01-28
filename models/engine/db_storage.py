@@ -30,8 +30,13 @@ class DBStorage:
         from models import classes
 
         result_dict = {}
-
         if cls:
+            # if the name of the object to get all values is entered directly
+            if cls in classes.values():
+                query = self.__session.query(cls).all()
+                # Return a dictionary: (like FileStorage)
+                return {"{}.{}".format(cls, elem.id): elem for elem in query}
+
             if isinstance(cls, str) and (class_obj := classes.get(cls)):
                 query = self.__session.query(class_obj).all()
                 # Return a dictionary: (like FileStorage)
@@ -64,3 +69,9 @@ class DBStorage:
         session_factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(session_factory)
+
+    def close(self):
+        """
+        calls remove method on the private session attribute
+        """
+        self.__session.close()
