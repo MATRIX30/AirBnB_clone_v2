@@ -55,25 +55,16 @@ class DBStorage:
         return result_dict
 
     def new(self, obj):
-        """
-        adds a new object to database
-        """
         self.__session.add(obj)
 
     def save(self):
-        """
-        saves or commits a transaction to the
-        database
-        """
         self.__session.commit()
 
     def delete(self, obj=None):
-        """deletes an object from database"""
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
-        """reloads the most recent objects from database"""
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
