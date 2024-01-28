@@ -12,6 +12,7 @@ class DBStorage:
     __session = None
 
     def __init__(self):
+        """db object constructor by creating connection to database"""
         self.__engine = (
             create_engine('mysql+mysqldb://{}:{}@{}:3306/{}'
                           .format(getenv('HBNB_MYSQL_USER'),
@@ -55,16 +56,22 @@ class DBStorage:
         return result_dict
 
     def new(self, obj):
+        """method to add new object to database"""
         self.__session.add(obj)
 
     def save(self):
+        """Method to commit a transaction to database"""
         self.__session.commit()
 
     def delete(self, obj=None):
+        """method to delete object from database storage"""
         if obj:
             self.__session.delete(obj)
 
     def reload(self):
+        """
+        method to reload data from database
+        """
         Base.metadata.create_all(self.__engine)
         session_factory = sessionmaker(
             bind=self.__engine, expire_on_commit=False)
