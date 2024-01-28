@@ -22,7 +22,7 @@ class State(BaseModel, Base):
         def cities(self):
             """
             Getter attribute that returns the list of City instances
-            with state_id equals to the current State.id 
+            with state_id equals to the current State.id
             """
             from models import storage, classes
             city_list = storage.all(classes['City']).values()
