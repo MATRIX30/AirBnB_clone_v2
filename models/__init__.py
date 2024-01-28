@@ -22,7 +22,6 @@ if getenv('HBNB_TYPE_STORAGE') == 'db':
     storage = DBStorage()
 else:
     from models.engine.file_storage import FileStorage
-    print("File storage activated")
     storage = FileStorage()
 
 storage.reload()
