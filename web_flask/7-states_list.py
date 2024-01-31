@@ -1,29 +1,33 @@
 #!/usr/bin/python3
 """
-scripts that starts a flask web application
-with the route /states_list returning all states in
-database
+python script to start a flask app with the /states_list route
+returning all the states stored in storage (file/db storage)
+and rendered using jinja template
 """
-from flask import Flask, abort, render_template
-from models import storage
-from models import State
+
+from flask import Flask, render_template
+from models import storage, State
 app = Flask(__name__)
+app.jinja_env.lstrip_blocks = True
 
 
 @app.route("/states_list", strict_slashes=False)
-def list_states():
-    """method to list all the states in storage"""
-    states = storage.all(State).values()
-    return render_template('7-states_list.html', states=states)
+def states_list():
+    """
+    This is the main function that handles the /states_list route
+    """
+    state_list = storage.all(State)
+    return render_template("8-cities_by_states.html", states=state_list)
 
 
 @app.teardown_appcontext
-def close_session(exception=None):
+def close_storage(error=None):
     """
-    method to close the session and close connection to storage
+    method to close and clean database connection
+    sessions
     """
     storage.close()
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
