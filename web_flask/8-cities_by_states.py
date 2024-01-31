@@ -22,8 +22,12 @@ def states_list():
 
 @app.teardown_appcontext
 def close_storage(error=None):
+    """
+    method to close and clean database connection 
+    sessions
+    """
     storage.close()
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
