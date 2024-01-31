@@ -37,8 +37,8 @@ class DBStorage:
                 query = self.__session.query(cls).all()
                 # Return a dictionary: (like FileStorage)
                 return {"{}.{}".format(cls, elem.id): elem for elem in query}
-
-            if isinstance(cls, str) and (class_obj := classes.get(cls)):
+            class_obj = classes.get(cls)
+            if isinstance(cls, str) and (class_obj):
                 query = self.__session.query(class_obj).all()
                 # Return a dictionary: (like FileStorage)
                 return {"{}.{}".format(cls, elem.id): elem for elem in query}
