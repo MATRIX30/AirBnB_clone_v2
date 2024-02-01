@@ -3,12 +3,12 @@
 python script to start a flask app with the /states_list route
 returning all the states stored in storage (file/db storage)
 and rendered using jinja template
+app.jinja_env.lstrip_blocks = True
 """
 
 from flask import Flask, render_template
 from models import storage, State
 app = Flask(__name__)
-app.jinja_env.lstrip_blocks = True
 
 
 @app.route("/states_list", strict_slashes=False)
