@@ -8,6 +8,8 @@ and rendered using jinja template
 
 from flask import Flask, render_template
 from models import storage, State
+
+
 app = Flask(__name__)
 app.jinja_env.lstrip_blocks = True
 
@@ -31,4 +33,4 @@ def close_storage(error=None):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
