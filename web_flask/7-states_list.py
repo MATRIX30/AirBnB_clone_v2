@@ -11,6 +11,7 @@ from models import storage, State
 app = Flask(__name__)
 app.jinja_env.lstrip_blocks = True
 
+
 @app.route("/states_list", strict_slashes=False)
 def states_list():
     """
