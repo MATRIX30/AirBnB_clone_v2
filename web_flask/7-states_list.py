@@ -16,8 +16,8 @@ def states_list():
     """
     This is the main function that handles the /states_list route
     """
-    state_list = storage.all(State)
-    return render_template("8-cities_by_states.html", states=state_list)
+    state_list = storage.all(State).values()
+    return render_template("7-states_list.html", states=state_list)
 
 
 @app.teardown_appcontext
