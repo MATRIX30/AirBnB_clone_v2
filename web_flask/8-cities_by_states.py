@@ -1,23 +1,28 @@
 #!/usr/bin/python3
 """
-python script to start a flask app with the /states_list route
-returning all the states stored in storage (file/db storage)
+python script to start a flask app with the /cities_by_states route
+returning all the states and cities stored in storage (file/db storage)
 and rendered using jinja template
 """
 
+
 from flask import Flask, render_template
-from models import storage, State
+from models import storage, State, City
+
+
 app = Flask(__name__)
 app.jinja_env.lstrip_blocks = True
 
 
-@app.route("/states_list", strict_slashes=False)
-def states_list():
+@app.route("/cities_by_states", strict_slashes=False)
+def cities_by_states():
     """
     This is the main function that handles the /states_list route
     """
-    state_list = storage.all(State)
-    return render_template("8-cities_by_states.html", states=state_list)
+    state_list = storage.all(State).values()
+    city_list = storage.all(City).values()
+    return render_template("8-cities_by_states.html",
+                           states=state_list, cities=city_list)
 
 
 @app.teardown_appcontext
